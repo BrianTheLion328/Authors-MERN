@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Form from '../components/Form';
 import List from '../components/List';
+import { Link } from '@reach/router';
 
 
-export default function Main() {
-    const [authors, setAuthors] = useState([]);
+export default function Main(props) {
+    const {authors, setAuthors} = props;
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
@@ -16,12 +16,11 @@ export default function Main() {
             })
     }, []);
 
-
     return (
         <div>
-            <Form authors={authors} setAuthors={setAuthors} />
+            <Link to="/new">Add a new Author</Link>
             <hr />
-            {loaded && <List authors={authors}/> }
+            {loaded && <List authors={authors} setAuthors={setAuthors} /> }
         </div>
     )
 }

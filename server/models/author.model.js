@@ -7,7 +7,7 @@ const AuthorSchema = new mongoose.Schema({
         minlength: [3, "Author's first and last name must total 3 characters or longer."],
     },
 
-})
+}, {timestamps: true})
 
 const Author = mongoose.model("Author", AuthorSchema)
 

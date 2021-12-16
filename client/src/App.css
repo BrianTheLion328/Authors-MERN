@@ -1,1 +1,17 @@
-
+.list-box{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 22%;
+    padding: 8px;
+}
+.edit-link {
+    align-self: center;
+    border: 1px solid black;
+    padding: 13px 18px;
+    background-color: skyblue;
+}
+.delete-btn {
+    background-color: pink;
+    padding: 1px 15px;
+}
