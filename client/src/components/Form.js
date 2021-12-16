@@ -7,7 +7,7 @@ export default function Form(props) {
 
     const [authors, setAuthors] = useState([]);
     const [fullName, setFullName] = useState('');
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
     const createAuthor = (e) => {
         e.preventDefault()
@@ -17,8 +17,8 @@ export default function Form(props) {
                 setAuthors([...authors, res.data]);
                 navigate('/')
             })
-            .catch((error) => {
-                console.log(error)
+            .catch((err) => {
+                console.log(err)
                 // if (err.response.data.errors) {
                 //     setErrors(err.response.data.errors)
                 // }
@@ -33,10 +33,10 @@ export default function Form(props) {
             </p>
             <form onSubmit={createAuthor}>
                 <div>
-                    {
+                    {/* {
                         errors.fullName &&
                         <span style={{color: "red"}}>{errors.fullName.message}</span>
-                    }
+                    } */}
                     <label>Full Name:</label>
                     <input type="text" name="fullName" value={fullName} onChange={ (e) => setFullName(e.target.value) } />
                 </div>
