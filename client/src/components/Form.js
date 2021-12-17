@@ -7,21 +7,19 @@ export default function Form(props) {
 
     const [authors, setAuthors] = useState([]);
     const [fullName, setFullName] = useState('');
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState({})
 
     const createAuthor = (e) => {
         e.preventDefault()
-
+        console.log("testing testing 123")
         axios.post("http://localhost:8000/api/authors", {name: fullName})
             .then(res => {
                 setAuthors([...authors, res.data]);
                 navigate('/')
             })
             .catch((err) => {
-                console.log(err)
-                // if (err.response.data.errors) {
-                //     setErrors(err.response.data.errors)
-                // }
+                console.log(err.response.data.errors)
+                setErrors(err.response.data.errors)
             })
     }
 
@@ -33,10 +31,10 @@ export default function Form(props) {
             </p>
             <form onSubmit={createAuthor}>
                 <div>
-                    {/* {
-                        errors.fullName &&
-                        <span style={{color: "red"}}>{errors.fullName.message}</span>
-                    } */}
+                    {
+                        errors.name &&
+                        <p style={{color: "red"}}>{errors.name.message}</p>
+                    }
                     <label>Full Name:</label>
                     <input type="text" name="fullName" value={fullName} onChange={ (e) => setFullName(e.target.value) } />
                 </div>
